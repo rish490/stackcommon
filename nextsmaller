@@ -1,0 +1,23 @@
+vector<ll>nextsmaller(ll arr[],ll n){   //-1 agar koi ni hai ns
+    stack<ll>st;
+    vector<ll>res(n,-1);
+    for(int i=n-1;i>=0;i--){
+        if(st.empty()==true){
+            res[i]=-1;
+        }
+        else{
+            while(st.empty()==false&&arr[i]<=arr[st.top()]){
+                st.pop();
+
+            }
+            if(st.empty()==true){
+                res[i]=-1;
+            }
+            else{
+                res[i]=st.top();
+            }
+        }
+        st.push(i);
+    }
+    return res;
+}
